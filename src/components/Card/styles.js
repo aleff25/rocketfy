@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 
 export const Container = styled.div`
     position: relative;
@@ -12,6 +12,8 @@ export const Container = styled.div`
 
     header {
         position: absolute;
+        top: -22px;
+        left: 15px;
     }
 
     p {
@@ -25,8 +27,25 @@ export const Container = styled.div`
         border-radius: 2px;
         margin-top: 5px;
     }
+
+    ${props => props.isDragging && css`
+        border: 2px dashed rgba(0,0,0,0.2);
+        padding-top: 31px;
+        border-radius: 0;
+        baground: transparent;
+        box-shadow: none;
+        cursor: grabbing;
+
+        p, img, header {
+            opacity: 0;
+        }
+    `}
 `;
 
 export const Label = styled.span`
-
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    display: inline-block;
+    background: ${props => props.color}
 `;
